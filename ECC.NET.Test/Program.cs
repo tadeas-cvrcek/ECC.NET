@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
-
-using ECC.NET;
 
 namespace ECC.NET
 {
@@ -14,18 +9,13 @@ namespace ECC.NET
 	{
 		static string CalculateMD5Hash(string input)
 		{
-			// step 1, calculate MD5 hash from input
-			MD5 md5 = System.Security.Cryptography.MD5.Create();
-			byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
-			byte[] hash = md5.ComputeHash(inputBytes);
+			byte[] hash = MD5.Create().ComputeHash(Encoding.ASCII.GetBytes(input));
 
-			// step 2, convert byte array to hex string
-			StringBuilder sb = new StringBuilder();
+			string temporaryString = string.Empty;
 			for (int i = 0; i < hash.Length; i++)
-			{
-				sb.Append(hash[i].ToString("X2"));
-			}
-			return sb.ToString();
+				temporaryString = string.Concat(temporaryString, hash[i].ToString("X2"));
+
+			return temporaryString;
 		}
 
 		static void PrintValue(string valueName, object value)
@@ -64,7 +54,7 @@ namespace ECC.NET
 			}
 
 			Console.WriteLine();
-			
+
 			Console.ForegroundColor = ConsoleColor.Yellow;
 			Console.WriteLine("AUTHENTICATION TEST (EXPERIMENTAL)");
 			Console.ForegroundColor = ConsoleColor.White;
