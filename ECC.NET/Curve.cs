@@ -68,7 +68,21 @@ namespace ECC.NET
 					}
 					break;
 				case Names.secp160k1:
-					throw new UnknownCurveException($"Unknown or not supported curve: {name.ToString()}.");
+					{
+						Name = name;
+
+						P = BigInteger.Parse("00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFAC73", NumberStyles.HexNumber);
+
+						A = BigInteger.Parse("000000000000000000000000000000000000000000", NumberStyles.HexNumber);
+						B = BigInteger.Parse("000000000000000000000000000000000000000007", NumberStyles.HexNumber);
+
+						G = new Point(BigInteger.Parse("003B4C382CE37AA192A4019E763036F4F5DD4D7EBB", NumberStyles.HexNumber), BigInteger.Parse("00938CF935318FDCED6BC28286531733C3F03C4FEE", NumberStyles.HexNumber), this);
+
+						N = BigInteger.Parse("0000000000000000000001B8FA16DFAB9ACA16B6B3", NumberStyles.HexNumber);
+						H = 1;
+
+						Length = 160;
+					}
 					break;
 				case Names.secp192r1:
 					{
@@ -88,7 +102,21 @@ namespace ECC.NET
 					}
 					break;
 				case Names.secp192k1:
-					throw new UnknownCurveException($"Unknown or not supported curve: {name.ToString()}.");
+					{
+						Name = name;
+
+						P = BigInteger.Parse("00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFEE37", NumberStyles.HexNumber);
+
+						A = BigInteger.Parse("00000000000000000000000000000000000000000000000000", NumberStyles.HexNumber);
+						B = BigInteger.Parse("00000000000000000000000000000000000000000000000003", NumberStyles.HexNumber);
+
+						G = new Point(BigInteger.Parse("00DB4FF10EC057E9AE26B07D0280B7F4341DA5D1B1EAE06C7D", NumberStyles.HexNumber), BigInteger.Parse("009B2F2F6D9C5628A7844163D015BE86344082AA88D95E2F9D", NumberStyles.HexNumber), this);
+
+						N = BigInteger.Parse("00FFFFFFFFFFFFFFFFFFFFFFFE26F2FC170F69466A74DEFD8D", NumberStyles.HexNumber);
+						H = 1;
+
+						Length = 192;
+					}
 					break;
 				case Names.secp224r1:
 					{
@@ -108,7 +136,21 @@ namespace ECC.NET
 					}
 					break;
 				case Names.secp224k1:
-					throw new UnknownCurveException($"Unknown or not supported curve: {name.ToString()}.");
+					{
+						Name = name;
+
+						P = BigInteger.Parse("00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFE56D", NumberStyles.HexNumber);
+
+						A = BigInteger.Parse("0000000000000000000000000000000000000000000000000000000000", NumberStyles.HexNumber);
+						B = BigInteger.Parse("0000000000000000000000000000000000000000000000000000000005", NumberStyles.HexNumber);
+
+						G = new Point(BigInteger.Parse("00A1455B334DF099DF30FC28A169A467E9E47075A90F7E650EB6B7A45C", NumberStyles.HexNumber), BigInteger.Parse("007E089FED7FBA344282CAFBD6F7E319F7C0B0BD59E2CA4BDB556D61A5", NumberStyles.HexNumber), this);
+
+						N = BigInteger.Parse("000000000000000000000000000001DCE8D2EC6184CAF0A971769FB1F7", NumberStyles.HexNumber);
+						H = 1;
+
+						Length = 224;
+					}
 					break;
 				case Names.secp256r1:
 					{
