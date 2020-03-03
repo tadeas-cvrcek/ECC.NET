@@ -5,8 +5,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Copyright>Copyright © 2020 Tadeáš Cvrček</Copyright>
     <RepositoryUrl>https://github.com/tadeas-cvrcek/ECC.NET</RepositoryUrl>
-    <Version>1.1.1.0</Version>
-    <AssemblyVersion>1.1.1.0</AssemblyVersion>
+    <Version>1.1.2</Version>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
