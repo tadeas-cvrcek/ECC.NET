@@ -4,8 +4,17 @@ using System.Numerics;
 
 namespace ECC.NET
 {
+	/// <summary>
+	/// Operations with big numbers (BigInteger).
+	/// </summary>
 	public static class Numerics
 	{
+		/// <summary>
+		/// Checks whether a value is (probably) prime using the Miller–Rabin primality test.
+		/// </summary>
+		/// <param name="value">Number to test.</param>
+		/// <param name="witnesses">Number of witnesses. More witnesses means better precision.</param>
+		/// <returns></returns>
 		public static bool IsProbablyPrime(BigInteger value, uint witnesses = 10)
 		{
 			if (value <= 1)
@@ -54,6 +63,12 @@ namespace ECC.NET
 			return true;
 		}
 
+		/// <summary>
+		/// Computes modulus of given value. The result is never negative
+		/// </summary>
+		/// <param name="value">Original value.</param>
+		/// <param name="modulus">Modulus to work with.</param>
+		/// <returns></returns>
 		public static BigInteger Modulus(BigInteger value, BigInteger modulus)
 		{
 			BigInteger reminder = value % modulus;
@@ -61,6 +76,12 @@ namespace ECC.NET
 			return reminder < 0 ? reminder += modulus : reminder;
 		}
 
+		/// <summary>
+		/// Computes inverse number to given value and modulus.
+		/// </summary>
+		/// <param name="value">Original value.</param>
+		/// <param name="modulus">Modulus to work with.</param>
+		/// <returns></returns>
 		public static BigInteger ModularInverse(BigInteger value, BigInteger modulus)
 		{
 			if (value == 0)

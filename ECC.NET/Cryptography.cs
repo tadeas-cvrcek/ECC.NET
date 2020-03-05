@@ -3,6 +3,9 @@ using System.Numerics;
 
 namespace ECC.NET
 {
+	/// <summary>
+	/// Cryptographic functions using elliptic-curves.
+	/// </summary>
 	public static class Cryptography
 	{
 		public struct KeyPair
@@ -11,6 +14,11 @@ namespace ECC.NET
 			public Point PublicKey;
 		}
 
+		/// <summary>
+		/// Generates a pair of keys.
+		/// </summary>
+		/// <param name="curve">Curve to generate a pair of keys on.</param>
+		/// <returns></returns>
 		public static KeyPair GetKeyPair(Curve curve)
 		{
 			KeyPair result = new KeyPair();
@@ -21,7 +29,7 @@ namespace ECC.NET
 
 			Commons.randomNumberGenerator.GetBytes(randomBytes);
 
-			byte[] positiveRandomBytes = randomBytes.Concat(unsignedBytes).ToArray(); // To avoid randomBytes treated as negtive value
+			byte[] positiveRandomBytes = randomBytes.Concat(unsignedBytes).ToArray();
 			BigInteger randomValue = new BigInteger(positiveRandomBytes);
 
 			do
@@ -35,6 +43,12 @@ namespace ECC.NET
 			return result;
 		}
 
+		/// <summary>
+		/// Derives shared secret of two entities.
+		/// </summary>
+		/// <param name="privateKey">Own private key.</param>
+		/// <param name="publicKey">Foreign public key.</param>
+		/// <returns></returns>
 		public static Point GetSharedSecret(BigInteger privateKey, Point publicKey) => Point.Multiply(privateKey, publicKey);
 
 	}

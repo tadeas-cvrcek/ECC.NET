@@ -5,6 +5,9 @@ using System.Numerics;
 
 namespace ECC.NET
 {
+	/// <summary>
+	/// ECC.NET elliptic-curve class.
+	/// </summary>
 	public class Curve
 	{
 		public enum Names
@@ -29,6 +32,10 @@ namespace ECC.NET
 		public short H { get; private set; }
 		public uint Length { get; private set; }
 
+		/// <summary>
+		/// Creates known elliptic-curve instance by given name.
+		/// </summary>
+		/// <param name="name">Name of target curve.</param>
 		public Curve(Names name)
 		{
 			switch (name)
@@ -191,6 +198,16 @@ namespace ECC.NET
 			}
 		}
 
+		/// <summary>
+		/// Creates an elliptic-curve instance with custom parameters.
+		/// </summary>
+		/// <param name="p"></param>
+		/// <param name="a"></param>
+		/// <param name="b"></param>
+		/// <param name="g"></param>
+		/// <param name="n"></param>
+		/// <param name="h"></param>
+		/// <param name="length"></param>
 		public Curve(BigInteger p, BigInteger a, BigInteger b, Point g, BigInteger n, short h, uint length)
 		{
 			Name = null;
@@ -208,7 +225,18 @@ namespace ECC.NET
 			Length = length;
 		}
 
+		/// <summary>
+		/// Checks whether a point is on the elliptic-curve.
+		/// </summary>
+		/// <param name="point">Point to check.</param>
+		/// <returns>True if point is on the elliptic-curve.</returns>
 		public bool IsOnCurve(Point point) => Point.IsInfinityPoint(point) ? true : ((BigInteger.Pow(point.Y, 2) - BigInteger.Pow(point.X, 3) - A * point.X - B) % P) == 0;
+
+		/// <summary>
+		/// Checks whether a point is valid.
+		/// </summary>
+		/// <param name="point">Point to check.</param>
+		/// <param name="exception">Exception to be thrown if the point is not valid.</param>
 		public void CheckPoint(Point point, Exception exception)
 		{
 			if (!IsOnCurve(point))

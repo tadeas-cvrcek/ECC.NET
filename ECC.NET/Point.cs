@@ -4,6 +4,9 @@ using System.Numerics;
 
 namespace ECC.NET
 {
+	/// <summary>
+	/// ECC.NET elliptic-curve point class.
+	/// </summary>
 	public class Point
 	{
 		public static Point InfinityPoint => null;
@@ -13,6 +16,12 @@ namespace ECC.NET
 		public BigInteger Y { get; set; }
 		public Curve Curve { get; set; }
 
+		/// <summary>
+		/// Creates an elliptic-curve point instance.
+		/// </summary>
+		/// <param name="x">X coordinate.</param>
+		/// <param name="y">Y coordinate.</param>
+		/// <param name="curve">Appropriate elliptic-curve instance.</param>
 		public Point(BigInteger x, BigInteger y, Curve curve)
 		{
 			X = x;
@@ -21,8 +30,18 @@ namespace ECC.NET
 			Curve = curve;
 		}
 
+		/// <summary>
+		/// Checks whether the point is valid.
+		/// </summary>
+		/// <param name="exception">Exception to be thrown if the point is not valid.</param>
 		public void CheckPoint(Exception exception) => Curve.CheckPoint(this, exception);
 
+		/// <summary>
+		/// Multiplies given point by given scalar.
+		/// </summary>
+		/// <param name="scalar">Scalar to multiply by.</param>
+		/// <param name="point">Point to be multiplied.</param>
+		/// <returns></returns>
 		public static Point Multiply(BigInteger scalar, Point point)
 		{
 			if (Point.IsInfinityPoint(point) || scalar % point.Curve.N == 0)
@@ -51,6 +70,12 @@ namespace ECC.NET
 			return result;
 		}
 
+		/// <summary>
+		/// Adds two points on the same curve.
+		/// </summary>
+		/// <param name="first"></param>
+		/// <param name="second"></param>
+		/// <returns></returns>
 		public static Point Add(Point first, Point second)
 		{
 			if (Point.IsInfinityPoint(first))
@@ -88,6 +113,11 @@ namespace ECC.NET
 			return result;
 		}
 
+		/// <summary>
+		/// Adds multiple points on the same curve.
+		/// </summary>
+		/// <param name="points">Points to add.</param>
+		/// <returns></returns>
 		public static Point Add(params Point[] points)
 		{
 			if (points.Length <= 2)
@@ -100,6 +130,11 @@ namespace ECC.NET
 			return result;
 		}
 
+		/// <summary>
+		/// Negates a point.
+		/// </summary>
+		/// <param name="point">Point to negate.</param>
+		/// <returns></returns>
 		public static Point Negate(Point point)
 		{
 			point.CheckPoint(new InvalidPointException("Point is not on specified curve."));
