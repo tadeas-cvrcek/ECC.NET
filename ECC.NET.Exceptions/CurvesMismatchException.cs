@@ -3,7 +3,7 @@
 namespace ECC.NET.Exceptions
 {
 	/// <summary>
-	/// Exception for point operations. Used when one of the points has different curve instance assinged.
+	/// Exception for point operations. Used when one of the points has different curve instance assigned.
 	/// </summary>
 	public class CurvesMismatchException : Exception
 	{
