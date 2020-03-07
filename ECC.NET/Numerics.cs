@@ -64,34 +64,34 @@ namespace ECC.NET
 		}
 
 		/// <summary>
-		/// Computes modulus of given value. The result is never negative
+		/// Computes modulus of given value. The result is never negative.
 		/// </summary>
 		/// <param name="value">Original value.</param>
-		/// <param name="modulus">Modulus to work with.</param>
+		/// <param name="modulo">Modulo to work with.</param>
 		/// <returns></returns>
-		public static BigInteger Modulus(BigInteger value, BigInteger modulus)
+		public static BigInteger Modulus(BigInteger value, BigInteger modulo)
 		{
-			BigInteger reminder = value % modulus;
+			BigInteger reminder = value % modulo;
 
-			return reminder < 0 ? reminder += modulus : reminder;
+			return reminder < 0 ? reminder += modulo : reminder;
 		}
 
 		/// <summary>
-		/// Computes inverse number to given value and modulus.
+		/// Computes inverse number to given value and modulo.
 		/// </summary>
 		/// <param name="value">Original value.</param>
-		/// <param name="modulus">Modulus to work with.</param>
+		/// <param name="modulo">Modulo to work with.</param>
 		/// <returns></returns>
-		public static BigInteger ModularInverse(BigInteger value, BigInteger modulus)
+		public static BigInteger ModularInverse(BigInteger value, BigInteger modulo)
 		{
 			if (value == 0)
 				throw new DivideByZeroException();
 
 			if (value < 0)
-				return modulus - ModularInverse(-value, modulus);
+				return modulo - ModularInverse(-value, modulo);
 
 			BigInteger a = 0, oldA = 1;
-			BigInteger b = modulus, oldB = value;
+			BigInteger b = modulo, oldB = value;
 
 			while (b != 0)
 			{
@@ -112,10 +112,10 @@ namespace ECC.NET
 			if (gcd != 1)
 				throw new GreatestCommonDivisorException($"GCD is not 1, but {gcd}.");
 
-			if (Modulus(value * c, modulus) != 1)
+			if (Modulus(value * c, modulo) != 1)
 				throw new ArithmeticException("Modular inverse final check failed.");
 
-			return Modulus(c, modulus);
+			return Modulus(c, modulo);
 		}
 
 		/// <summary>
@@ -132,24 +132,24 @@ namespace ECC.NET
 		}
 
 		/// <summary>
-		/// Generates random number which belongs to multiplicative group defined by modulus parameter. Uses brute-force algorithm.
+		/// Generates random number which belongs to multiplicative group defined by modulo parameter. Uses brute-force algorithm.
 		/// </summary>
-		/// <param name="modulus">Multipliative group definiction.</param>
+		/// <param name="modulo">Multiplicative group definition.</param>
 		/// <param name="length">Length of number in bits.</param>
 		/// <returns></returns>
-		public static BigInteger GetNumberFromGroup(BigInteger modulus, uint length)
+		public static BigInteger GetNumberFromGroup(BigInteger modulo, uint length)
 		{
 			BigInteger result = 1;
 			length /= 8;
 
 			do
 			{
-				result = GetNumber(length) % modulus;
+				result = GetNumber(length) % modulo;
 
 				if (result < 0)
-					result += modulus;
+					result += modulo;
 
-			} while (BigInteger.GreatestCommonDivisor(result, modulus) != 1);
+			} while (BigInteger.GreatestCommonDivisor(result, modulo) != 1);
 
 			return result;
 		}
