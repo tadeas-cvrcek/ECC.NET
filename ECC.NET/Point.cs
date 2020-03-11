@@ -65,7 +65,7 @@ namespace ECC.NET
 				scalar >>= 1;
 			}
 
-			point.Curve.CheckPoint(result, new Exception());
+			point.Curve.CheckPoint(result, new InvalidPointException("Point is not on specified curve."));
 
 			return result;
 		}
