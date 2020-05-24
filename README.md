@@ -55,3 +55,6 @@ Cryptography.KeyPair bobKeyPair = Cryptography.GetKeyPair(curve);
 Point aliceSharedSecret = Cryptography.GetSharedSecret(aliceKeyPair.PrivateKey, bobKeyPair.PublicKey);
 Point bobSharedSecret = Cryptography.GetSharedSecret(bobKeyPair.PrivateKey, aliceKeyPair.PublicKey);
 ```
+
+## References
+* EllipticCurveCrypto (https://github.com/majunkang/EllipticCurveCrypto) under MIT License (https://github.com/majunkang/EllipticCurveCrypto/blob/master/LICENSE) as inspiration
