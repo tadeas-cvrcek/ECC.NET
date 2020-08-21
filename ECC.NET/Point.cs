@@ -129,6 +129,16 @@ namespace ECC.NET
 
 			return result;
 		}
+		
+		/// <summary>
+		/// Doubles a point.
+		/// </summary>
+		/// <param name="point">Point to double.</param>
+		/// <returns></returns>
+		public static Point Double(Point point)
+		{
+			return Point.Add(point, point);
+		}
 
 		/// <summary>
 		/// Negates a point.
