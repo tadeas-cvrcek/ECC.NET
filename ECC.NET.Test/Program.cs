@@ -18,7 +18,7 @@ namespace ECC.NET
 			Console.WriteLine("ADDITION TEST");
 			Console.ForegroundColor = ConsoleColor.White;
 
-			foreach (Curve.Names curveName in (Curve.Names[])Enum.GetValues(typeof(Curve.Names)))
+			foreach (Curve.CurveName curveName in (Curve.CurveName[])Enum.GetValues(typeof(Curve.CurveName)))
 			{
 				try
 				{
@@ -45,7 +45,7 @@ namespace ECC.NET
 			Console.WriteLine("MULTIPLICATION TEST");
 			Console.ForegroundColor = ConsoleColor.White;
 
-			foreach (Curve.Names curveName in (Curve.Names[])Enum.GetValues(typeof(Curve.Names)))
+			foreach (Curve.CurveName curveName in (Curve.CurveName[])Enum.GetValues(typeof(Curve.CurveName)))
 			{
 				try
 				{
@@ -76,7 +76,7 @@ namespace ECC.NET
 			Console.WriteLine("COMBINED EQUATION TEST");
 			Console.ForegroundColor = ConsoleColor.White;
 
-			foreach (Curve.Names curveName in (Curve.Names[])Enum.GetValues(typeof(Curve.Names)))
+			foreach (Curve.CurveName curveName in (Curve.CurveName[])Enum.GetValues(typeof(Curve.CurveName)))
 			{
 				try
 				{
@@ -106,7 +106,7 @@ namespace ECC.NET
 			Console.WriteLine("ECDH TEST");
 			Console.ForegroundColor = ConsoleColor.White;
 
-			foreach (Curve.Names curveName in (Curve.Names[])Enum.GetValues(typeof(Curve.Names)))
+			foreach (Curve.CurveName curveName in (Curve.CurveName[])Enum.GetValues(typeof(Curve.CurveName)))
 			{
 				try
 				{

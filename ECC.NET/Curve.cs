@@ -10,7 +10,7 @@ namespace ECC.NET
 	/// </summary>
 	public class Curve
 	{
-		public enum Names
+		public enum CurveName
 		{
 			brainpoolp160r1,
 			brainpoolp192r1,
@@ -34,7 +34,7 @@ namespace ECC.NET
 			secp256k1
 		}
 
-		public Names? Name { get; private set; }
+		public CurveName? Name { get; private set; }
 		public BigInteger P { get; private set; }
 		public BigInteger A { get; private set; }
 		public BigInteger B { get; private set; }
@@ -47,11 +47,11 @@ namespace ECC.NET
 		/// Creates known elliptic-curve instance by given name.
 		/// </summary>
 		/// <param name="name">Name of target curve.</param>
-		public Curve(Names name)
+		public Curve(CurveName name)
 		{
 			switch (name)
 			{
-				case Names.brainpoolp160r1:
+				case CurveName.brainpoolp160r1:
 					{
 						Name = name;
 
@@ -68,7 +68,7 @@ namespace ECC.NET
 						Length = 160;
 					}
 					break;
-				case Names.brainpoolp192r1:
+				case CurveName.brainpoolp192r1:
 					{
 						Name = name;
 
@@ -85,7 +85,7 @@ namespace ECC.NET
 						Length = 192;
 					}
 					break;
-				case Names.brainpoolp224r1:
+				case CurveName.brainpoolp224r1:
 					{
 						Name = name;
 
@@ -102,7 +102,7 @@ namespace ECC.NET
 						Length = 224;
 					}
 					break;
-				case Names.brainpoolp256r1:
+				case CurveName.brainpoolp256r1:
 					{
 						Name = name;
 
@@ -119,7 +119,7 @@ namespace ECC.NET
 						Length = 256;
 					}
 					break;
-				case Names.brainpoolp320r1:
+				case CurveName.brainpoolp320r1:
 					{
 						Name = name;
 
@@ -136,7 +136,7 @@ namespace ECC.NET
 						Length = 320;
 					}
 					break;
-				case Names.brainpoolp384r1:
+				case CurveName.brainpoolp384r1:
 					{
 						Name = name;
 
@@ -153,7 +153,7 @@ namespace ECC.NET
 						Length = 384;
 					}
 					break;
-				case Names.brainpoolp512r1:
+				case CurveName.brainpoolp512r1:
 					{
 						Name = name;
 
@@ -170,7 +170,7 @@ namespace ECC.NET
 						Length = 512;
 					}
 					break;
-				case Names.nistp192:
+				case CurveName.nistp192:
 					{
 						Name = name;
 
@@ -187,7 +187,7 @@ namespace ECC.NET
 						Length = 192;
 					}
 					break;
-				case Names.nistp256:
+				case CurveName.nistp256:
 					{
 						Name = name;
 
@@ -204,7 +204,7 @@ namespace ECC.NET
 						Length = 256;
 					}
 					break;
-				case Names.nistp384:
+				case CurveName.nistp384:
 					{
 						Name = name;
 
@@ -221,7 +221,7 @@ namespace ECC.NET
 						Length = 384;
 					}
 					break;
-				case Names.nistp521:
+				case CurveName.nistp521:
 					{
 						Name = name;
 
@@ -238,7 +238,7 @@ namespace ECC.NET
 						Length = 521;
 					}
 					break;
-				case Names.secp160r1:
+				case CurveName.secp160r1:
 					{
 						Name = name;
 
@@ -255,7 +255,7 @@ namespace ECC.NET
 						Length = 160;
 					}
 					break;
-				case Names.secp160r2:
+				case CurveName.secp160r2:
 					{
 						Name = name;
 
@@ -272,7 +272,7 @@ namespace ECC.NET
 						Length = 160;
 					}
 					break;
-				case Names.secp160k1:
+				case CurveName.secp160k1:
 					{
 						Name = name;
 
@@ -289,7 +289,7 @@ namespace ECC.NET
 						Length = 160;
 					}
 					break;
-				case Names.secp192r1:
+				case CurveName.secp192r1:
 					{
 						Name = name;
 
@@ -306,7 +306,7 @@ namespace ECC.NET
 						Length = 192;
 					}
 					break;
-				case Names.secp192k1:
+				case CurveName.secp192k1:
 					{
 						Name = name;
 
@@ -323,7 +323,7 @@ namespace ECC.NET
 						Length = 192;
 					}
 					break;
-				case Names.secp224r1:
+				case CurveName.secp224r1:
 					{
 						Name = name;
 
@@ -340,7 +340,7 @@ namespace ECC.NET
 						Length = 224;
 					}
 					break;
-				case Names.secp224k1:
+				case CurveName.secp224k1:
 					{
 						Name = name;
 
@@ -357,7 +357,7 @@ namespace ECC.NET
 						Length = 224;
 					}
 					break;
-				case Names.secp256r1:
+				case CurveName.secp256r1:
 					{
 						Name = name;
 
@@ -374,7 +374,7 @@ namespace ECC.NET
 						Length = 256;
 					}
 					break;
-				case Names.secp256k1:
+				case CurveName.secp256k1:
 					{
 						Name = name;
 
