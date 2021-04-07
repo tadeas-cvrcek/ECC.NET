@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29418.71
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECC.NET", "ECC.NET\ECC.NET.csproj", "{9153353F-9CA0-4A8B-B24A-BB6208FB95B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECC.NET", "ECC.NET\ECC.NET.csproj", "{192094EC-CDA8-4C32-8C48-42BADF899311}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECC.NET.Exceptions", "ECC.NET.Exceptions\ECC.NET.Exceptions.csproj", "{F4EE54A2-39FA-4EB8-8B7C-7114E0C0EB0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECC.NET.Exceptions", "ECC.NET.Exceptions\ECC.NET.Exceptions.csproj", "{E6E2C7CF-924C-49F5-8C3A-8C29643D98FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECC.NET.Test", "ECC.NET.Test\ECC.NET.Test.csproj", "{7739FD4E-9C87-425E-B779-5A69A595F72A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECC.NET.Tests", "ECC.NET.Tests\ECC.NET.Tests.csproj", "{64505455-589D-4733-B9EF-5266345A708F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,18 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9153353F-9CA0-4A8B-B24A-BB6208FB95B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9153353F-9CA0-4A8B-B24A-BB6208FB95B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9153353F-9CA0-4A8B-B24A-BB6208FB95B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9153353F-9CA0-4A8B-B24A-BB6208FB95B9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F4EE54A2-39FA-4EB8-8B7C-7114E0C0EB0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F4EE54A2-39FA-4EB8-8B7C-7114E0C0EB0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F4EE54A2-39FA-4EB8-8B7C-7114E0C0EB0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F4EE54A2-39FA-4EB8-8B7C-7114E0C0EB0E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7739FD4E-9C87-425E-B779-5A69A595F72A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7739FD4E-9C87-425E-B779-5A69A595F72A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7739FD4E-9C87-425E-B779-5A69A595F72A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7739FD4E-9C87-425E-B779-5A69A595F72A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{192094EC-CDA8-4C32-8C48-42BADF899311}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{192094EC-CDA8-4C32-8C48-42BADF899311}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{192094EC-CDA8-4C32-8C48-42BADF899311}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{192094EC-CDA8-4C32-8C48-42BADF899311}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6E2C7CF-924C-49F5-8C3A-8C29643D98FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6E2C7CF-924C-49F5-8C3A-8C29643D98FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6E2C7CF-924C-49F5-8C3A-8C29643D98FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6E2C7CF-924C-49F5-8C3A-8C29643D98FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64505455-589D-4733-B9EF-5266345A708F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64505455-589D-4733-B9EF-5266345A708F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64505455-589D-4733-B9EF-5266345A708F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64505455-589D-4733-B9EF-5266345A708F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

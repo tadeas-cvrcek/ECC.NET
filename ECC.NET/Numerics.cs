@@ -15,7 +15,7 @@ namespace ECC.NET
 		/// <param name="value">Number to test.</param>
 		/// <param name="witnesses">Number of witnesses. More witnesses means better precision.</param>
 		/// <returns></returns>
-		public static bool IsProbablyPrime(BigInteger value, uint witnesses = 10)
+		public static bool IsProbablyPrime(this BigInteger value, uint witnesses = 10)
 		{
 			if (value <= 1)
 				throw new ArgumentException("Minimum number of witnesses is 2.");
@@ -69,7 +69,7 @@ namespace ECC.NET
 		/// <param name="value">Original value.</param>
 		/// <param name="modulo">Modulo to work with.</param>
 		/// <returns></returns>
-		public static BigInteger Modulus(BigInteger value, BigInteger modulo)
+		public static BigInteger Modulus(this BigInteger value, BigInteger modulo)
 		{
 			BigInteger reminder = value % modulo;
 
@@ -82,13 +82,13 @@ namespace ECC.NET
 		/// <param name="value">Original value.</param>
 		/// <param name="modulo">Modulo to work with.</param>
 		/// <returns></returns>
-		public static BigInteger ModularInverse(BigInteger value, BigInteger modulo)
+		public static BigInteger ModularInverse(this BigInteger value, BigInteger modulo)
 		{
 			if (value == 0)
 				throw new DivideByZeroException();
 
 			if (value < 0)
-				return modulo - ModularInverse(-value, modulo);
+				return modulo - (-value).ModularInverse(modulo);
 
 			BigInteger a = 0, oldA = 1;
 			BigInteger b = modulo, oldB = value;
@@ -112,10 +112,10 @@ namespace ECC.NET
 			if (gcd != 1)
 				throw new GreatestCommonDivisorException($"GCD is not 1, but {gcd}.");
 
-			if (Modulus(value * c, modulo) != 1)
+			if ((value * c).Modulus(modulo) != 1)
 				throw new ArithmeticException("Modular inverse final check failed.");
 
-			return Modulus(c, modulo);
+			return c.Modulus(modulo);
 		}
 
 		/// <summary>
@@ -137,9 +137,9 @@ namespace ECC.NET
 		/// <param name="modulo">Multiplicative group definition.</param>
 		/// <param name="length">Length of number in bits.</param>
 		/// <returns></returns>
-		public static BigInteger GetNumberFromGroup(BigInteger modulo, uint length)
+		public static BigInteger GetNumberFromGroup(this BigInteger modulo, uint length)
 		{
-			BigInteger result = 1;
+			BigInteger result;
 			length /= 8;
 
 			do

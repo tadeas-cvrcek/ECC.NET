@@ -1,23 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <Copyright>Copyright © 2020 Tadeáš Cvrček</Copyright>
     <RepositoryUrl>https://github.com/tadeas-cvrcek/ECC.NET</RepositoryUrl>
-    <Version>1.4.0</Version>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Version>2.0.0</Version>
+    <Copyright>Copyright © 2021 Tadeáš Cvrček</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ECC.NET.Exceptions\ECC.NET.Exceptions.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <None Include="..\LICENSE" Link="LICENSE" />
     <None Include="..\LICENSE">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ECC.NET.Exceptions\ECC.NET.Exceptions.csproj" />
   </ItemGroup>
 
 </Project>

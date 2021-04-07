@@ -44,15 +44,15 @@ namespace ECC.NET
 		/// <returns></returns>
 		public static Point Multiply(BigInteger scalar, Point point)
 		{
-			if (Point.IsInfinityPoint(point) || scalar % point.Curve.N == 0)
-				return Point.InfinityPoint;
+			if (IsInfinityPoint(point) || scalar % point.Curve.N == 0)
+				return InfinityPoint;
 
 			point.Curve.CheckPoint(point, new InvalidPointException("Point is not on specified curve."));
 
 			if (scalar < 0)
 				return Multiply(-scalar, Negate(point));
 
-			Point result = Point.InfinityPoint;
+			Point result = InfinityPoint;
 			Point addend = point;
 
 			while (scalar != 0)
@@ -78,10 +78,10 @@ namespace ECC.NET
 		/// <returns></returns>
 		public static Point Add(Point first, Point second)
 		{
-			if (Point.IsInfinityPoint(first))
+			if (IsInfinityPoint(first))
 				return second;
 
-			if (Point.IsInfinityPoint(second))
+			if (IsInfinityPoint(second))
 				return first;
 
 			Curve commonCurve;
@@ -99,16 +99,16 @@ namespace ECC.NET
 			if (first.X == second.X)
 			{
 				if (first.Y != second.Y)
-					return Point.InfinityPoint;
+					return InfinityPoint;
 
-				temporary = (3 * BigInteger.Pow(first.X, 2) + commonCurve.A) * Numerics.ModularInverse(2 * first.Y, commonCurve.P);
+				temporary = (3 * BigInteger.Pow(first.X, 2) + commonCurve.A) * (2 * first.Y).ModularInverse(commonCurve.P));
 			}
 			else
-				temporary = (first.Y - second.Y) * Numerics.ModularInverse(first.X - second.X, commonCurve.P);
+				temporary = (first.Y - second.Y) * (first.X - second.X).ModularInverse(commonCurve.P);
 
 			BigInteger newX = BigInteger.Pow(temporary, 2) - first.X - second.X;
 			BigInteger newY = first.Y + temporary * (newX - first.X);
-			Point result = new Point(Numerics.Modulus(newX, commonCurve.P), Numerics.Modulus(-newY, commonCurve.P), commonCurve);
+			Point result = new Point(newX.Modulus(commonCurve.P), (-newY).Modulus(commonCurve.P), commonCurve);
 
 			return result;
 		}
@@ -123,13 +123,13 @@ namespace ECC.NET
 			if (points.Length <= 2)
 				throw new ArgumentException("Minimum number of points is 2.");
 
-			Point result = Point.InfinityPoint;
+			Point result = InfinityPoint;
 			for (int i = 1; i < points.Length; i++)
-				result = Point.Add(points[i - 1], points[i]);
+				result = Add(points[i - 1], points[i]);
 
 			return result;
 		}
-		
+
 		/// <summary>
 		/// Doubles a point.
 		/// </summary>
@@ -137,7 +137,7 @@ namespace ECC.NET
 		/// <returns></returns>
 		public static Point Double(Point point)
 		{
-			return Point.Add(point, point);
+			return Add(point, point);
 		}
 
 		/// <summary>
@@ -149,10 +149,10 @@ namespace ECC.NET
 		{
 			point.CheckPoint(new InvalidPointException("Point is not on specified curve."));
 
-			if (Point.IsInfinityPoint(point))
+			if (IsInfinityPoint(point))
 				return point;
 
-			Point result = new Point(point.X, Numerics.Modulus(-point.Y, point.Curve.P), point.Curve);
+			Point result = new Point(point.X, (-point.Y).Modulus(point.Curve.P), point.Curve);
 
 			result.CheckPoint(new InvalidPointException("Point is not on specified curve."));
 

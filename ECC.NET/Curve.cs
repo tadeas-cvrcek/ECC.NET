@@ -34,14 +34,14 @@ namespace ECC.NET
 			secp256k1
 		}
 
-		public CurveName? Name { get; private set; }
-		public BigInteger P { get; private set; }
-		public BigInteger A { get; private set; }
-		public BigInteger B { get; private set; }
-		public Point G { get; private set; }
-		public BigInteger N { get; private set; }
-		public short H { get; private set; }
-		public uint Length { get; private set; }
+		public CurveName? Name { get; }
+		public BigInteger P { get; }
+		public BigInteger A { get; }
+		public BigInteger B { get; }
+		public Point G { get; }
+		public BigInteger N { get; }
+		public short H { get; }
+		public uint Length { get; }
 
 		/// <summary>
 		/// Creates known elliptic-curve instance by given name.
