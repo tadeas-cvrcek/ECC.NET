@@ -1,5 +1,6 @@
 ﻿using ECC.NET.Exceptions;
 using System;
+using System.Collections.Generic;
 using System.Numerics;
 
 namespace ECC.NET
@@ -101,17 +102,25 @@ namespace ECC.NET
 				if (first.Y != second.Y)
 					return InfinityPoint;
 
-				temporary = (3 * BigInteger.Pow(first.X, 2) + commonCurve.A) * (2 * first.Y).ModularInverse(commonCurve.P));
+				temporary = (3 * BigInteger.Pow(first.X, 2) + commonCurve.A) * (2 * first.Y).ModularInverse(commonCurve.P);
 			}
 			else
 				temporary = (first.Y - second.Y) * (first.X - second.X).ModularInverse(commonCurve.P);
 
 			BigInteger newX = BigInteger.Pow(temporary, 2) - first.X - second.X;
 			BigInteger newY = first.Y + temporary * (newX - first.X);
-			Point result = new Point(newX.Modulus(commonCurve.P), (-newY).Modulus(commonCurve.P), commonCurve);
+			Point result = new (newX.Modulus(commonCurve.P), (-newY).Modulus(commonCurve.P), commonCurve);
 
 			return result;
 		}
+
+		/// <summary>
+		/// Subtracts second point from the first one.
+		/// </summary>
+		/// <param name="first"></param>
+		/// <param name="second">Point to subtract</param>
+		/// <returns></returns>
+		public static Point Subtract(Point first, Point second) => Add(first, Negate(second));
 
 		/// <summary>
 		/// Adds multiple points on the same curve.
@@ -152,16 +161,11 @@ namespace ECC.NET
 			if (IsInfinityPoint(point))
 				return point;
 
-			Point result = new Point(point.X, (-point.Y).Modulus(point.Curve.P), point.Curve);
+			Point result = new (point.X, (-point.Y).Modulus(point.Curve.P), point.Curve);
 
 			result.CheckPoint(new InvalidPointException("Point is not on specified curve."));
 
 			return result;
-		}
-
-		public override string ToString()
-		{
-			return string.Concat(X, Y);
 		}
 
 		/// <summary>
@@ -173,5 +177,41 @@ namespace ECC.NET
 		{
 			return format.Replace("X", X.ToString()).Replace("Y", Y.ToString());
 		}
+
+		public override string ToString()
+		{
+			return string.Concat(X, Y);
+		}
+
+		public static bool operator ==(Point first, Point second)
+		{
+			if (first is null && second is null)
+				return true;
+
+			if (first is null || second is null)
+				return false;
+
+			return first.Curve == second.Curve && first.X == second.X && first.Y == second.Y;
+		}
+
+		public static bool operator !=(Point first, Point second) => !(first == second);
+
+		public static Point operator *(BigInteger scalar, Point point) => Multiply(scalar, point);
+
+		public static Point operator +(Point first, Point second) => Add(first, second);
+
+		public static Point operator -(Point first, Point second) => Subtract(first, second);
+
+		public static Point operator !(Point point) => Negate(point);
+
+		public override bool Equals(object obj)
+		{
+			return obj is Point point &&
+						 X.Equals(point.X) &&
+						 Y.Equals(point.Y) &&
+						 this.Curve == point.Curve;
+		}
+
+		public override int GetHashCode() => HashCode.Combine(this.Curve, this.X, this.Y);
 	}
 }

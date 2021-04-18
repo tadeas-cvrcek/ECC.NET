@@ -1,5 +1,6 @@
 ﻿using ECC.NET.Exceptions;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Numerics;
 
@@ -392,7 +393,7 @@ namespace ECC.NET
 					}
 					break;
 				default:
-					throw new UnknownCurveException($"Unknown curve ({name.ToString()}) has been requested.");
+					throw new UnknownCurveException($"Unknown curve ({name}) has been requested.");
 			}
 		}
 
@@ -440,5 +441,35 @@ namespace ECC.NET
 			if (!IsOnCurve(point))
 				throw exception;
 		}
+
+		public override bool Equals(object obj)
+		{
+			return obj is Curve curve &&
+    				 P.Equals(curve.P) &&
+						 A.Equals(curve.A) &&
+						 B.Equals(curve.B) &&
+						 this.G == curve.G &&
+						 N.Equals(curve.N) &&
+						 H == curve.H &&
+						 Length == curve.Length;
+		}
+
+		public override int GetHashCode()
+		{
+			return HashCode.Combine(P, A, B, G, N, H, Length);
+		}
+
+		public static bool operator ==(Curve first, Curve second)
+		{
+			if (first is null && second is null)
+				return true;
+
+			if (first is null || second is null)
+				return false;
+
+			return first.A == second.A && first.B == second.B && first.G.X == second.G.X && first.G.Y == second.G.Y && first.H == second.H && first.N == second.N && first.P == second.P && first.Length == second.Length;
+		}
+
+		public static bool operator !=(Curve first, Curve second) => !(first == second);
 	}
 }

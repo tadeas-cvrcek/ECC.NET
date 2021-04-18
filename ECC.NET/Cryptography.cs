@@ -21,7 +21,7 @@ namespace ECC.NET
 		/// <returns></returns>
 		public static KeyPair GetKeyPair(Curve curve)
 		{
-			KeyPair result = new KeyPair();
+			KeyPair result = new();
 			uint keyBytes = curve.Length / 8;
 
 			byte[] unsignedBytes = new byte[] { 0x00 };
@@ -30,14 +30,13 @@ namespace ECC.NET
 			Commons.randomNumberGenerator.GetBytes(randomBytes);
 
 			byte[] positiveRandomBytes = randomBytes.Concat(unsignedBytes).ToArray();
-			BigInteger randomValue = new BigInteger(positiveRandomBytes);
+			BigInteger randomValue = new(positiveRandomBytes);
 
 			do
 			{
 				result.PrivateKey = (randomValue % curve.N);
 			}
 			while (result.PrivateKey == 0);
-
 
 			result.PublicKey = Point.Multiply(result.PrivateKey, curve.G);
 			return result;

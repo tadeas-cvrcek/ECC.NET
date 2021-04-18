@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ECC.NET;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,9 @@ namespace ECC.NET.Tests.PointOperations
 
 		[Fact]
 		public void Add() => Assert.True(Curve.IsOnCurve(Point.Add(Curve.G, Curve.G)));
+
+		[Fact]
+		public void Subtract() => Assert.True(Curve.IsOnCurve(Point.Subtract(Point.Multiply(4, Curve.G), Curve.G)));
 
 		[Fact]
 		public void Multiply() => Assert.True(Curve.IsOnCurve(Point.Multiply(2, Curve.G)));
