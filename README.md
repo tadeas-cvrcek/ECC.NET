@@ -16,22 +16,22 @@ ECC.NET is a .NET 5 library, which implements elliptic-curve primitives (such as
 ```
 ECC.NET solution
 +-- ECC.NET
+|   +-- Exceptions
+|   |   +-- CurvesMismatchException.cs          (one of the points has different curve instance assigned)
+|   |   +-- GreatestCommonDivisorException.cs   (unwanted greatest common divisor value)
+|   |   +-- InvalidPointException.cs            (point is not on appropriate curve)
+|   |   +-- UnknownCurveException.cs            (usage of unknown elliptic-curve name)
 |   +-- Commons.cs                              (common objects to more ECC.NET classes)
 |   +-- Cryptography.cs                         (cryptographic functions using elliptic-curves)
 |   +-- Curve.cs                                (ECC.NET elliptic-curve class)
 |   +-- Numerics.cs                             (operations with big numbers as extensions)
 |   +-- Point.cs                                (ECC.NET elliptic-curve point class)
-+-- ECC.NET.Exceptions
-|   +-- CurvesMismatchException.cs              (one of the points has different curve instance assigned)
-|   +-- GreatestCommonDivisorException.cs       (unwanted greatest common divisor value)
-|   +-- InvalidPointException.cs                (point is not on appropriate curve)
-|   +-- UnknownCurveException.cs                (usage of unknown elliptic-curve name)
 +-- ECC.NET.Tests
-|   +-- PointOperations                         (point operations xUnit tests - test per EC)
+|   +-- PointOperations                         (point operations xUnit tests - test per elliptic-curve)
 |   |   +-- ...
-|   +-- Protocols                               (test of implemented xUnit protocols - test per EC)
+|   +-- Protocols                               (test of implemented xUnit protocols - test per elliptic-curve)
 |   |   +-- ...
-|   +-- ICurveSpecific.cs                       (interface defining EC specific class)
+|   +-- ICurveSpecific.cs                       (interface defining elliptic-curve specific class)
 ```
 
 ## Examples
