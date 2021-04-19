@@ -27,9 +27,9 @@ ECC.NET solution
 |   +-- Numerics.cs                             (operations with big numbers as extensions)
 |   +-- Point.cs                                (ECC.NET elliptic-curve point class)
 +-- ECC.NET.Tests
-|   +-- PointOperations                         (point operations xUnit tests - test per elliptic-curve)
+|   +-- PointOperations                         (xUnit point operations tests - test per elliptic-curve)
 |   |   +-- ...
-|   +-- Protocols                               (test of implemented xUnit protocols - test per elliptic-curve)
+|   +-- Protocols                               (xUnit selected protocols test - test per elliptic-curve)
 |   |   +-- ...
 |   +-- ICurveSpecific.cs                       (interface defining elliptic-curve specific class)
 ```
