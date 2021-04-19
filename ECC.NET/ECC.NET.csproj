@@ -16,8 +16,4 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ECC.NET.Exceptions\ECC.NET.Exceptions.csproj" />
-  </ItemGroup>
-
 </Project>
