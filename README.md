@@ -21,6 +21,8 @@ ECC.NET solution
 |   |   +-- GreatestCommonDivisorException.cs   (unwanted greatest common divisor value)
 |   |   +-- InvalidPointException.cs            (point is not on appropriate curve)
 |   |   +-- UnknownCurveException.cs            (usage of unknown elliptic-curve name)
+|   +-- Extensions
+|   |   +-- ByteExtensions.cs                   (extensions for byte data type)
 |   +-- Commons.cs                              (common objects to more ECC.NET classes)
 |   +-- Cryptography.cs                         (cryptographic functions using elliptic-curves)
 |   +-- Curve.cs                                (ECC.NET elliptic-curve class)
@@ -29,7 +31,7 @@ ECC.NET solution
 +-- ECC.NET.Tests
 |   +-- PointOperations                         (xUnit point operations tests - test per elliptic-curve)
 |   |   +-- ...
-|   +-- Protocols                               (xUnit selected protocols test - test per elliptic-curve)
+|   +-- Protocols                               (xUnit selected protocols tests - test per elliptic-curve)
 |   |   +-- ...
 |   +-- ICurveSpecific.cs                       (interface defining elliptic-curve specific class)
 ```
