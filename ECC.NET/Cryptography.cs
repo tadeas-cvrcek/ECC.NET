@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using ECC.NET.Extensions;
+using System.Linq;
 using System.Numerics;
+using System.Security.Cryptography;
 
 namespace ECC.NET
 {
@@ -27,7 +29,7 @@ namespace ECC.NET
 			byte[] unsignedBytes = new byte[] { 0x00 };
 			byte[] randomBytes = new byte[keyBytes];
 
-			Commons.randomNumberGenerator.GetBytes(randomBytes);
+			randomBytes.Randomize();
 
 			byte[] positiveRandomBytes = randomBytes.Concat(unsignedBytes).ToArray();
 			BigInteger randomValue = new(positiveRandomBytes);

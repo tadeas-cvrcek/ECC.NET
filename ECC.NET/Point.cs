@@ -38,6 +38,34 @@ namespace ECC.NET
 		public void CheckPoint(Exception exception) => Curve.CheckPoint(this, exception);
 
 		/// <summary>
+		/// Adds a point to this point.
+		/// </summary>
+		/// <param name="point">Point to add.</param>
+		/// <returns>Result after point addition.</returns>
+		public Point Add(Point point) => Add(this, point);
+
+		/// <summary>
+		/// Subtracts a point from this point.
+		/// </summary>
+		/// <param name="point">Point to subtract.</param>
+		/// <returns>Result after point subtraction.</returns>
+		public Point Subtract(Point point) => Subtract(this, point);
+
+		/// <summary>
+		/// Multiplies this point by given scalar.
+		/// </summary>
+		/// <param name="scalar">Scalar to multiply by.</param>
+		/// <returns>Result after point multiplication.</returns>
+		public Point Multiply(BigInteger scalar) => Multiply(scalar, this);
+
+		/// <summary>
+		/// Negates this point.
+		/// </summary>
+		/// <returns></returns>
+		public Point Negate() => Negate(this);
+
+
+		/// <summary>
 		/// Multiplies given point by given scalar.
 		/// </summary>
 		/// <param name="scalar">Scalar to multiply by.</param>

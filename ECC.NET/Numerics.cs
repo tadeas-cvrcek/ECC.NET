@@ -1,4 +1,5 @@
 ﻿using ECC.NET.Exceptions;
+using ECC.NET.Extensions;
 using System;
 using System.Numerics;
 
@@ -36,7 +37,7 @@ namespace ECC.NET
 			{
 				do
 				{
-					Commons.randomNumberGenerator.GetBytes(bytes);
+					bytes.Randomize();
 
 					a = new BigInteger(bytes);
 				}
@@ -126,7 +127,7 @@ namespace ECC.NET
 		public static BigInteger GetNumber(uint length)
 		{
 			byte[] randomOutput = new byte[length];
-			Commons.randomNumberGenerator.GetBytes(randomOutput);
+			randomOutput.Randomize();
 
 			return new BigInteger(randomOutput);
 		}

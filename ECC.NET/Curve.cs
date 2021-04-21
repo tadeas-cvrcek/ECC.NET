@@ -429,7 +429,7 @@ namespace ECC.NET
 		/// </summary>
 		/// <param name="point">Point to check.</param>
 		/// <returns>True if point is on the elliptic-curve.</returns>
-		public bool IsOnCurve(Point point) => Point.IsInfinityPoint(point) ? true : ((BigInteger.Pow(point.Y, 2) - BigInteger.Pow(point.X, 3) - A * point.X - B) % P) == 0;
+		public bool IsOnCurve(Point point) => Point.IsInfinityPoint(point) || ((BigInteger.Pow(point.Y, 2) - BigInteger.Pow(point.X, 3) - A * point.X - B) % P) == 0;
 
 		/// <summary>
 		/// Checks whether a point is valid.
